@@ -42,7 +42,7 @@ resource "aws_subnet" "private_a" {
 
 ## NAT GW
 resource "aws_eip" "nat_a_eip" {
-  domain      = vpc
+  domain      = "vpc"
 }
 
 resource "aws_nat_gateway" "nat_a" {
