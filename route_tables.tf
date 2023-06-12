@@ -10,6 +10,11 @@ resource "aws_route_table" "public_to_internet_rt" {
   tags = {
     Name = "internet-gateway-route-table"
   }
+    lifecycle {
+    ignore_changes = [
+      route,
+    ]
+  }
 }
 
 resource "aws_route_table" "private_to_public_subnet_rt" {
@@ -22,6 +27,11 @@ resource "aws_route_table" "private_to_public_subnet_rt" {
 
   tags = {
     Name = "private-to-public"
+  }
+    lifecycle {
+    ignore_changes = [
+      route,
+    ]
   }
 }
 
