@@ -1,3 +1,4 @@
+# updated output latest
 output "my_vpc_id" {
     value = aws_vpc.main_vpc.id
 }
