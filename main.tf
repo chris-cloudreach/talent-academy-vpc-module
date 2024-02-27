@@ -6,7 +6,8 @@ resource "aws_vpc" "main_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-      Name = var.vpc_name
+      Name = var.vpc_name,
+      Class = "packer"
   }
 }
 
@@ -40,6 +41,7 @@ resource "aws_subnet" "private_a" {
 
   tags = {
     Name = "talent-academy-private-a"
+    Class = "packer"
   }
 }
 
