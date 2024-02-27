@@ -1,4 +1,5 @@
 resource "aws_instance" "Packer_Bastion_ec2" {
+  count = var.ec2created == true ? 1:0
   ami                         = "ami-052c9ea013e6e3567" #would need to use data to fetch latest AMI
   instance_type               = "t2.micro"
   associate_public_ip_address = true
@@ -13,6 +14,7 @@ resource "aws_instance" "Packer_Bastion_ec2" {
 }
 
 resource "aws_instance" "packer_private_ec2" {
+  count = var.ec2created == true ? 1:0
   ami                         = "ami-052c9ea013e6e3567" #would need to use data to fetch latest AMI
   instance_type               = "t2.micro"
   associate_public_ip_address = true

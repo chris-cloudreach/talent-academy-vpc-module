@@ -4,6 +4,11 @@ variable "vpc_cidr" {
     type = string
 }
 
+variable "ec2created" {
+    description = "shall module create ec2?"
+    type = bool
+}
+
 variable "region" {
     description = "Default region for our VPC"
     type = string
