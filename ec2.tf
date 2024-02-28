@@ -5,7 +5,7 @@ resource "aws_instance" "Packer_Bastion_ec2" {
   associate_public_ip_address = true
   key_name                    = "ta-lab-key"
   subnet_id                   = aws_subnet.public_a.id
-  vpc_security_group_ids      = [aws_security_group.packer-security-group.id]
+  vpc_security_group_ids      = [aws_security_group.packer-security-group[0].id]
   user_data = file("packerInstall.sh")
 
   tags = {
@@ -20,7 +20,13 @@ resource "aws_instance" "packer_private_ec2" {
   associate_public_ip_address = false
   key_name                    = "ta-lab-key"
   subnet_id                   = aws_subnet.private_a.id
-  vpc_security_group_ids      = [aws_security_group.packer-security-group.id]
+  # I added [0] because of below
+    # Because aws_security_group.packer-security-group has "count" set, its attributes
+    # must be accessed on specific instances.
+    # For example, to correlate with indices of a referring resource, use:
+    # aws_security_group.packer-security-group[count.index]
+
+  vpc_security_group_ids      = [aws_security_group.packer-security-group[0].id]
   user_data = file("packerInstall.sh")
 
   tags = {
