@@ -7,6 +7,7 @@ variable "vpc_cidr" {
 variable "ec2created" {
     description = "shall module create ec2?"
     type = bool
+    default = false
 }
 
 variable "region" {
