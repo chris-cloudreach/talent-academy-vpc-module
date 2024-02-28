@@ -1,4 +1,5 @@
 resource "aws_security_group" "packer-security-group" {
+  count = var.ec2created == true ? 1:0
   name        = "Packer Security Group"
   description = "Allow ssh access"
   vpc_id      = aws_vpc.main_vpc.id
